@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Progress Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="gaming-theme.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Main Tracker Page -->
+      <div id="trackerPage" class="page">
+        <!-- Header Section -->
+        <header class="header">
+          <div class="date-container">
+            <h1>Daily Progress Tracker</h1>
+            <div class="date-controls">
+              <p class="current-date" id="currentDate"></p>
+              <div class="date-picker-container">
+                <label for="datePicker">Select Date:</label>
+                <div class="date-controls-row">
+                  <input type="date" id="datePicker" class="date-picker" />
+                  <button id="todayBtn" class="today-btn">Today</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-center">
+            <div class="daily-progress">
+              <div class="progress-circle" id="dailyProgress">
+                <svg width="100" height="100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="#e0f2f1"
+                    stroke-width="8"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="#00695c"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                    stroke-dasharray="282.743"
+                    stroke-dashoffset="282.743"
+                    transform="rotate(-90 50 50)"
+                    id="progressCircle"
+                  />
+                </svg>
+                <div class="progress-text">
+                  <span class="progress-percentage" id="progressPercentage"
+                    >0%</span
+                  >
+                  <span class="progress-label">Complete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="streak-container">
+              <div class="streak-item">
+                <span class="streak-number" id="totalStreak">0</span>
+                <span class="streak-label">Day Streak</span>
+              </div>
+              <div class="streak-item">
+                <span class="streak-number" id="completedToday">0</span>
+                <span class="streak-label">Completed Today</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button id="addNewGoal" class="btn btn-add">➕ Add Goal</button>
+              <div class="secondary-buttons">
+                <button id="saveProgress" class="btn btn-save">💾 Save</button>
+                <button id="viewHistory" class="btn btn-history">
+                  📊 Statistics
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Activity Layout Controls -->
+        <div class="section-header-with-controls">
+          <div class="section-title-with-tabs">
+            <h2 class="section-title" id="sectionTitle">📋 Daily Activities</h2>
+            <div class="time-period-tabs-inline">
+              <button class="tab-btn active" data-period="daily">📅 Daily</button>
+              <button class="tab-btn" data-period="weekly">📆 Weekly</button>
+              <button class="tab-btn" data-period="monthly">🗓️ Monthly</button>
+              <button class="tab-btn" data-period="yearly">📊 Yearly</button>
+            </div>
+          </div>
+          <div class="layout-controls">
+            <label for="activityLayoutSelect">Layout:</label>
+            <select id="activityLayoutSelect" class="layout-selector">
+              <option value="grid">Grid</option>
+              <option value="list">List</option>
+              <option value="compact">Compact</option>
+            </select>
+            <button id="customizeActivityLayout" class="layout-btn" title="Customize Layout">⚙️</button>
+            <button id="activitySettings" class="layout-btn" title="Activity Settings">🛠️</button>
+          </div>
+        </div>
+
+        <!-- Activity Sections -->
+        <div class="activities-grid" id="activitiesContainer">
+          <!-- Activities will be dynamically loaded here -->
+        </div>
+
+        <!-- Mobile Swipe Navigation -->
+        <div class="swipe-indicators" id="swipeIndicators" style="display: none;">
+          <!-- Dots will be dynamically generated -->
+        </div>
+        <div class="swipe-hint" id="swipeHint" style="display: none;">
+          👈 Swipe to navigate between activities 👉
+        </div>
+
+        <!-- Customization Modal -->
+        <div id="customizeModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Customize Your Goals</h3>
+              <span class="close" id="closeCustomizeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <div class="customize-section">
+                <div class="customize-header">
+                  <h4>Activities</h4>
+                  <button id="addActivityBtn" class="btn btn-add">
+                    + Add New Activity
+                  </button>
+                </div>
+                <div id="activitiesList" class="activities-list">
+                  <!-- Activities will be loaded here -->
+                </div>
+              </div>
+
+              <div class="customize-actions sticky-actions">
+                <button id="saveCustomization" class="btn btn-primary">
+                  Save Changes
+                </button>
+                <button id="resetToDefaults" class="btn btn-secondary">
+                  Reset to Defaults
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- History Page -->
+      <div id="historyPage" class="page" style="display: none">
+        <header class="history-header">
+          <div class="history-nav">
+            <button id="backToTracker" class="btn btn-back">
+              ← Back to Tracker
+            </button>
+          </div>
+        </header>
+
+        <main class="history-main">
+          <div class="history-container">
+            <div class="history-content" id="historyContent">
+              <!-- History content will be loaded here -->
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Add Goal Page -->
+      <div id="addGoalPage" class="page" style="display: none">
+        <header class="goal-page-header">
+          <div class="goal-nav">
+            <button id="backFromAddGoal" class="btn btn-back">
+              ← Back to Tracker
+            </button>
+            <h1>Add New Goal</h1>
+          </div>
+        </header>
+
+        <main class="goal-main">
+          <div class="goal-container">
+            <form id="addGoalPageForm" class="goal-form">
+              <div class="form-section">
+                <h2>Basic Information</h2>
+
+                <div class="form-group">
+                  <label for="goalPageName">Goal Name:</label>
+                  <input
+                    type="text"
+                    id="goalPageName"
+                    placeholder="e.g., Reading, Writing, Cooking"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="goalPageCompletionType">Completion Type:</label>
+                  <select id="goalPageCompletionType">
+                    <option value="time">Time-based (minutes/hours)</option>
+                    <option value="quantity">Quantity (count/number)</option>
+                    <option value="binary">Yes/No (done or not done)</option>
+                    <option value="percentage">Percentage (0-100%)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="goalPageTarget" id="goalPageTargetLabel"
+                    >Daily Target:</label
+                  >
+                  <input
+                    type="number"
+                    id="goalPageTarget"
+                    min="1"
+                    max="480"
+                    value="30"
+                    required
+                  />
+                </div>
+
+                <div class="form-group" id="goalPageUnitGroup">
+                  <label for="goalPageUnit">Unit:</label>
+                  <select id="goalPageUnit">
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                  </select>
+                  <div
+                    id="goalPageCustomUnitGroup"
+                    class="custom-unit-group"
+                    style="display: none"
+                  >
+                    <label for="goalPageCustomUnit">Custom Unit:</label>
+                    <input
+                      type="text"
+                      id="goalPageCustomUnit"
+                      placeholder="e.g., cups, books, calls..."
+                      maxlength="20"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h2>Choose Icon</h2>
+                <div class="emoji-grid" id="goalPageEmojiGrid">
+                  <!-- Emoji options will be populated here -->
+                </div>
+                <input type="hidden" id="goalPageSelectedEmoji" value="⭐" />
+              </div>
+
+              <div class="form-section">
+                <h2>Choose Color</h2>
+
+                <div class="color-section">
+                  <h3>Basic Colors</h3>
+                  <div
+                    class="color-picker-grid basic-colors"
+                    id="goalPageBasicColorGrid"
+                  >
+                    <!-- Basic color options will be populated here -->
+                  </div>
+                </div>
+
+                <div
+                  class="color-section advanced-section"
+                  id="goalPageAdvancedSection"
+                  style="display: none"
+                >
+                  <h3>Advanced Colors</h3>
+                  <div
+                    class="color-picker-grid advanced-colors"
+                    id="goalPageAdvancedColorGrid"
+                  >
+                    <!-- Advanced color options will be populated here -->
+                  </div>
+                </div>
+
+                <div class="color-controls">
+                  <button
+                    type="button"
+                    class="color-toggle-btn"
+                    id="goalPageToggleAdvanced"
+                  >
+                    Show More Colors
+                  </button>
+                  <div class="custom-color-input">
+                    <label for="goalPageCustomColor">Custom Color:</label>
+                    <input
+                      type="color"
+                      id="goalPageCustomColor"
+                      class="custom-color-picker"
+                    />
+                  </div>
+                </div>
+
+                <input
+                  type="hidden"
+                  id="goalPageSelectedColor"
+                  value="#00695c"
+                />
+              </div>
+
+              <div class="form-actions-page">
+                <button
+                  type="button"
+                  id="cancelPageAddGoal"
+                  class="btn btn-secondary"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  id="savePageNewGoal"
+                  class="btn btn-primary"
+                >
+                  Add Goal
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+
+      <!-- Edit Goal Page -->
+      <div id="editGoalPage" class="page" style="display: none">
+        <header class="goal-page-header">
+          <div class="goal-nav">
+            <button id="backFromEditGoal" class="btn btn-back">
+              ← Back to Tracker
+            </button>
+            <h1>Edit Goal</h1>
+          </div>
+        </header>
+
+        <main class="goal-main">
+          <div class="goal-container">
+            <form id="editGoalPageForm" class="goal-form">
+              <div class="form-section">
+                <h2>Basic Information</h2>
+
+                <div class="form-group">
+                  <label for="editGoalPageName">Goal Name:</label>
+                  <input
+                    type="text"
+                    id="editGoalPageName"
+                    placeholder="e.g., Reading, Writing, Cooking"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="editGoalPageCompletionType"
+                    >Completion Type:</label
+                  >
+                  <select id="editGoalPageCompletionType">
+                    <option value="time">Time-based (minutes/hours)</option>
+                    <option value="quantity">Quantity (count/number)</option>
+                    <option value="binary">Yes/No (done or not done)</option>
+                    <option value="percentage">Percentage (0-100%)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="editGoalPageTarget" id="editGoalPageTargetLabel"
+                    >Daily Target:</label
+                  >
+                  <input
+                    type="number"
+                    id="editGoalPageTarget"
+                    min="1"
+                    max="480"
+                    value="30"
+                    required
+                  />
+                </div>
+
+                <div class="form-group" id="editGoalPageUnitGroup">
+                  <label for="editGoalPageUnit">Unit:</label>
+                  <select id="editGoalPageUnit">
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                  </select>
+                  <div
+                    id="editGoalPageCustomUnitGroup"
+                    class="custom-unit-group"
+                    style="display: none"
+                  >
+                    <label for="editGoalPageCustomUnit">Custom Unit:</label>
+                    <input
+                      type="text"
+                      id="editGoalPageCustomUnit"
+                      placeholder="e.g., cups, books, calls..."
+                      maxlength="20"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h2>Choose Icon</h2>
+                <div class="emoji-grid" id="editGoalPageEmojiGrid">
+                  <!-- Emoji options will be populated here -->
+                </div>
+                <input
+                  type="hidden"
+                  id="editGoalPageSelectedEmoji"
+                  value="⭐"
+                />
+              </div>
+
+              <div class="form-section">
+                <h2>Choose Color</h2>
+
+                <div class="color-section">
+                  <h3>Basic Colors</h3>
+                  <div
+                    class="color-picker-grid basic-colors"
+                    id="editGoalPageBasicColorGrid"
+                  >
+                    <!-- Basic color options will be populated here -->
+                  </div>
+                </div>
+
+                <div
+                  class="color-section advanced-section"
+                  id="editGoalPageAdvancedSection"
+                  style="display: none"
+                >
+                  <h3>Advanced Colors</h3>
+                  <div
+                    class="color-picker-grid advanced-colors"
+                    id="editGoalPageAdvancedColorGrid"
+                  >
+                    <!-- Advanced color options will be populated here -->
+                  </div>
+                </div>
+
+                <div class="color-controls">
+                  <button
+                    type="button"
+                    class="color-toggle-btn"
+                    id="editGoalPageToggleAdvanced"
+                  >
+                    Show More Colors
+                  </button>
+                  <div class="custom-color-input">
+                    <label for="editGoalPageCustomColor">Custom Color:</label>
+                    <input
+                      type="color"
+                      id="editGoalPageCustomColor"
+                      class="custom-color-picker"
+                    />
+                  </div>
+                </div>
+
+                <input
+                  type="hidden"
+                  id="editGoalPageSelectedColor"
+                  value="#00695c"
+                />
+              </div>
+
+              <div class="form-actions-page">
+                <button
+                  type="button"
+                  id="cancelPageEditGoal"
+                  class="btn btn-secondary"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  id="savePageEditGoal"
+                  class="btn btn-primary"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+
+      <!-- Add New Goal Modal -->
+      <div id="addGoalModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add New Goal</h3>
+            <span class="close" id="closeAddGoalModal">&times;</span>
+          </div>
+          <div class="modal-body">
+            <form id="addGoalForm">
+              <div class="form-group">
+                <label for="goalName">Goal Name:</label>
+                <input
+                  type="text"
+                  id="goalName"
+                  placeholder="e.g., Reading, Writing, Cooking"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="goalIcon">Choose Icon:</label>
+                <div class="emoji-grid" id="emojiGrid">
+                  <!-- Emoji options will be populated here -->
+                </div>
+                <input type="hidden" id="selectedEmoji" value="⭐" />
+              </div>
+
+              <div class="form-group">
+                <label for="goalColor">Choose Color:</label>
+                <div class="color-picker-grid" id="colorPickerGrid">
+                  <!-- Color options will be populated here -->
+                </div>
+                <input type="hidden" id="selectedColor" value="#00695c" />
+              </div>
+
+              <div class="form-group">
+                <label for="goalCompletionType">Completion Type:</label>
+                <select id="goalCompletionType">
+                  <option value="time">Time-based (minutes/hours)</option>
+                  <option value="quantity">Quantity (count/number)</option>
+                  <option value="binary">Yes/No (done or not done)</option>
+                  <option value="percentage">Percentage (0-100%)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="goalTarget" id="goalTargetLabel"
+                  >Daily Target:</label
+                >
+                <input
+                  type="number"
+                  id="goalTarget"
+                  min="1"
+                  max="480"
+                  value="30"
+                  required
+                />
+              </div>
+
+              <div class="form-group" id="goalUnitGroup">
+                <label for="goalUnit">Unit:</label>
+                <select id="goalUnit">
+                  <option value="minutes">Minutes</option>
+                  <option value="hours">Hours</option>
+                  <option value="pages">Pages</option>
+                  <option value="exercises">Exercises</option>
+                  <option value="glasses">Glasses (water)</option>
+                  <option value="reps">Reps</option>
+                  <option value="items">Items</option>
+                  <option value="times">Times</option>
+                  <option value="custom">Custom (write your own)</option>
+                </select>
+                <div
+                  id="customUnitGroup"
+                  class="custom-unit-group"
+                  style="display: none"
+                >
+                  <label for="customUnit">Custom Unit:</label>
+                  <input
+                    type="text"
+                    id="customUnit"
+                    placeholder="e.g., cups, books, calls..."
+                    maxlength="20"
+                  />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  id="cancelAddGoal"
+                  class="btn btn-secondary"
+                >
+                  Cancel
+                </button>
+                <button type="button" id="saveNewGoal" class="btn btn-primary">
+                  Add Goal
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Goal Modal -->
+      <div id="editGoalModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Edit Goal</h3>
+            <span class="close" id="closeEditGoalModal">&times;</span>
+          </div>
+          <div class="modal-body">
+            <form id="editGoalForm">
+              <div class="form-group">
+                <label for="editGoalName">Goal Name:</label>
+                <input
+                  type="text"
+                  id="editGoalName"
+                  placeholder="e.g., Reading, Writing, Cooking"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="editGoalIcon">Choose Icon:</label>
+                <div class="emoji-grid" id="editEmojiGrid">
+                  <!-- Emoji options will be populated here -->
+                </div>
+                <input type="hidden" id="editSelectedEmoji" value="⭐" />
+              </div>
+
+              <div class="form-group">
+                <label for="editGoalColor">Choose Color:</label>
+                <div class="color-picker-grid" id="editColorPickerGrid">
+                  <!-- Color options will be populated here -->
+                </div>
+                <input type="hidden" id="editSelectedColor" value="#00695c" />
+              </div>
+
+              <div class="form-group">
+                <label for="editGoalCompletionType">Completion Type:</label>
+                <select id="editGoalCompletionType">
+                  <option value="time">Time-based (minutes/hours)</option>
+                  <option value="quantity">Quantity (count/number)</option>
+                  <option value="binary">Yes/No (done or not done)</option>
+                  <option value="percentage">Percentage (0-100%)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="editGoalTarget" id="editGoalTargetLabel"
+                  >Daily Target:</label
+                >
+                <input
+                  type="number"
+                  id="editGoalTarget"
+                  min="1"
+                  max="480"
+                  value="30"
+                  required
+                />
+              </div>
+
+              <div class="form-group" id="editGoalUnitGroup">
+                <label for="editGoalUnit">Unit:</label>
+                <select id="editGoalUnit">
+                  <option value="minutes">Minutes</option>
+                  <option value="hours">Hours</option>
+                  <option value="pages">Pages</option>
+                  <option value="exercises">Exercises</option>
+                  <option value="glasses">Glasses (water)</option>
+                  <option value="reps">Reps</option>
+                  <option value="items">Items</option>
+                  <option value="times">Times</option>
+                  <option value="custom">Custom (write your own)</option>
+                </select>
+                <div
+                  id="editCustomUnitGroup"
+                  class="custom-unit-group"
+                  style="display: none"
+                >
+                  <label for="editCustomUnit">Custom Unit:</label>
+                  <input
+                    type="text"
+                    id="editCustomUnit"
+                    placeholder="e.g., cups, books, calls..."
+                    maxlength="20"
+                  />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  id="cancelEditGoal"
+                  class="btn btn-secondary"
+                >
+                  Cancel
+                </button>
+                <button type="button" id="saveEditGoal" class="btn btn-primary">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Settings Modal -->
+      <div id="activitySettingsModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Activity Settings</h3>
+            <span class="close" id="closeActivitySettingsModal">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="settings-section">
+              <h4>Manage Activities</h4>
+              <p class="settings-description">Edit or delete your activities. Changes will affect all dates.</p>
+              <div id="activitySettingsList" class="settings-activities-list">
+                <!-- Activities will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="gaming-enhancements.js"></script>
+  </body>
+</html>
