@@ -1,0 +1,2528 @@
+/* ============================================
+   GAMING THEME ENHANCEMENTS & OVERRIDES
+   Progressive Tracker Gaming Edition
+   ============================================ */
+
+/* Refined gaming color palette - Classy & Sophisticated */
+:root {
+  --primary-dark: #1a1d2e;
+  --primary-darker: #0f1117;
+  --secondary-dark: #252836;
+  --accent-primary: #6366f1; /* Refined indigo */
+  --accent-secondary: #8b5cf6; /* Sophisticated purple */
+  --accent-gold: #f59e0b; /* Warm amber gold */
+  --accent-success: #10b981; /* Emerald green */
+  --accent-danger: #ef4444; /* Clean red */
+  --accent-silver: #e5e7eb; /* Silver/platinum */
+
+  --bg-gradient: linear-gradient(135deg, #1a1d2e 0%, #252836 50%, #1f2233 100%);
+  --card-gradient: linear-gradient(
+    135deg,
+    rgba(37, 40, 54, 0.95) 0%,
+    rgba(26, 29, 46, 0.95) 100%
+  );
+  --accent-gradient: linear-gradient(
+    135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
+
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+  --shadow-gold: 0 0 25px rgba(245, 158, 11, 0.4);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark gaming background */
+body {
+  background: var(--bg-gradient) !important;
+  background-attachment: fixed !important;
+  color: #ffffff !important;
+  font-family: "Rajdhani", "Inter", sans-serif !important;
+}
+
+/* Subtle animated background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(99, 102, 241, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(139, 92, 246, 0.08) 0%,
+      transparent 50%
+    );
+  animation: backgroundPulse 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Subtle scanline effect - much lighter */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(99, 102, 241, 0.008) 2px,
+    rgba(99, 102, 241, 0.008) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* Container gaming styling */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header gaming overrides */
+.header {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  box-shadow: var(--shadow-card) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-gradient);
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.date-container h1 {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-family: "Orbitron", sans-serif !important;
+}
+
+.current-date {
+  color: var(--accent-silver) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* Date picker refined style */
+.date-picker {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+  color: #ffffff !important;
+  font-family: "Orbitron", monospace !important;
+}
+
+.date-picker:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+}
+
+/* Calendar icon styling - make it white */
+.date-picker::-webkit-calendar-picker-indicator {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e") !important;
+  background-color: transparent !important;
+  color: white !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+.date-picker::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.today-btn {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.today-btn:hover {
+  box-shadow: var(--shadow-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Streak container refined style */
+.streak-item {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+}
+
+.streak-number {
+  background: linear-gradient(
+    135deg,
+    var(--accent-gold) 0%,
+    #fbbf24 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: numberPulse 2s ease-in-out infinite !important;
+  font-family: "Orbitron", monospace !important;
+}
+
+@keyframes numberPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes streakFire {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px var(--accent-gold))
+      drop-shadow(0 0 12px rgba(245, 158, 11, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px var(--accent-gold))
+      drop-shadow(0 0 16px rgba(245, 158, 11, 0.5));
+  }
+}
+
+.streak-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 0.75rem !important;
+}
+
+/* Progress circle refined */
+.progress-circle {
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3)) !important;
+}
+
+.daily-progress .progress-percentage {
+  font-family: "Orbitron", monospace !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  padding: 0.125rem 0 0.125rem 0 !important;
+  margin: 0 !important;
+}
+
+.progress-percentage span {
+  /* Color set via inline style using custom activity color */
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  text-shadow: 0 0 8px currentColor !important;
+}
+
+.progress-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* Activity cards refined theme - compact size */
+.activity-card {
+  background: var(--card-gradient) !important;
+  /* Border color set via inline style using custom color */
+  box-shadow: var(--shadow-card) !important;
+  position: relative;
+  overflow: hidden;
+  max-width: 420px !important;
+  padding: 20px !important;
+  transition: transform 0.2s ease !important;
+}
+
+.activity-card:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Removed purple gradient ::before - will use custom color from inline styles */
+
+.activity-icon {
+  /* Custom color applied via inline style - don't override background */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  animation: iconFloat 4s ease-in-out infinite !important;
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.activity-header h2 {
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-family: "Orbitron", sans-serif !important;
+}
+
+/* Edit, remove, and quick complete buttons gaming style */
+.quick-complete-activity-btn {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
+}
+
+.quick-complete-activity-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+  border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+.edit-btn,
+.remove-btn {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.edit-btn:hover {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+.remove-btn:hover {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: var(--accent-danger) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Completion badge gaming animation */
+.completion-badge {
+  /* Custom color applied via inline style - don't override background */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 1.125rem !important;
+  transform: scale(0) rotate(-180deg);
+  transition: all 0.5s ease;
+}
+
+.completion-badge.completed {
+  transform: scale(1) rotate(0deg) !important;
+  animation: badgePop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.completion-badge.completed:hover {
+  animation: subtlePulse 0.6s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Input fields gaming style */
+.time-input-group label,
+.form-group label,
+.notes-section label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+}
+
+.time-input-group input,
+.form-group input,
+.form-group select,
+.binary-select,
+.custom-unit-group input {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  font-family: "Orbitron", monospace !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.time-input-group input:focus,
+.form-group input:focus,
+.form-group select:focus,
+.binary-select:focus,
+.custom-unit-group input:focus {
+  border-color: var(--title-accent, #6366f1) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Progress bar gaming enhancement */
+.progress-bar {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  height: 8px !important;
+}
+
+.progress-fill {
+  /* Background color set via inline style - don't override */
+  position: relative;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progressShine 2s infinite;
+}
+
+/* Progress percentage styling */
+.progress-percentage {
+  text-align: center !important;
+  margin-top: 0.125rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Activity card specific percentage spacing - highest specificity */
+.activity-card .progress-percentage {
+  text-align: center !important;
+  margin-top: 0.03125rem !important;
+  margin-bottom: 0.0625rem !important;
+  padding: 0 !important;
+}
+
+/* Desktop gaming theme - force ultra-tight spacing */
+@media (min-width: 769px) {
+  .activity-card .progress-percentage {
+    margin-top: 0.03125rem !important;
+    margin-bottom: 0.0625rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Time Period Tabs - Gaming Theme */
+.time-period-tabs {
+  margin: 2rem 0 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Inline Time Period Tabs in Header */
+.section-title-with-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.time-period-tabs-inline {
+  display: flex;
+  background: rgba(26, 29, 46, 0.8);
+  border-radius: 8px;
+  padding: 0.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.time-period-tabs-inline .tab-btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.125rem;
+  border-radius: 6px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.time-period-tabs-inline .tab-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.time-period-tabs-inline .tab-btn.active {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+}
+
+.time-period-tabs-inline .tab-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.tab-navigation {
+  display: flex;
+  background: rgba(26, 29, 46, 0.8);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.tab-btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.25rem;
+  border-radius: 8px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.tab-btn.active {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Mobile tab adjustments */
+@media (max-width: 768px) {
+  .time-period-tabs {
+    margin: 1.5rem 0 1rem 0;
+  }
+  
+  .section-title-with-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .time-period-tabs-inline {
+    align-self: stretch;
+    max-width: 100%;
+  }
+  
+  .time-period-tabs-inline .tab-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    flex: 1;
+    min-width: auto;
+  }
+  
+  .tab-navigation {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .tab-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    flex: 1;
+    margin: 0 0.125rem;
+  }
+}
+
+.progress-percentage span {
+  /* Color and weight set via inline style using custom activity color */
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 0.9rem !important;
+  text-shadow: 0 0 6px currentColor !important;
+}
+
+/* Activity bottom controls gaming theme */
+.activity-bottom-controls {
+  border-top: 1px solid rgba(99, 102, 241, 0.2) !important;
+  margin-top: 0.75rem !important;
+  padding-top: 0.75rem !important;
+}
+
+.quick-complete-activity-btn {
+  background: var(--activity-button-color, var(--accent-gradient)) !important;
+  color: #ffffff !important;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.quick-complete-activity-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+  filter: brightness(1.1) !important;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-stats span:first-child {
+  color: var(--accent-primary) !important;
+  font-family: "Orbitron", monospace !important;
+  font-weight: 600 !important;
+}
+
+.progress-stats span:last-child {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Notes textarea gaming style */
+.notes-section textarea {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  font-family: "Inter", sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+.notes-section textarea:focus {
+  border-color: var(--title-accent, #6366f1) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+.notes-section textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Button gaming enhancements */
+.btn {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 700 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-add {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2) !important;
+}
+
+.btn-add:hover {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5) !important;
+  transform: translateY(-3px) !important;
+}
+
+.btn-save {
+  background: linear-gradient(
+    135deg,
+    var(--accent-success) 0%,
+    #059669 100%
+  ) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-save:hover {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-history {
+  background: linear-gradient(
+    135deg,
+    var(--accent-secondary) 0%,
+    #7c3aed 100%
+  ) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-history:hover {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Modal refined gaming enhancements */
+.modal {
+  background: rgba(26, 29, 46, 0.95) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+.modal-content {
+  background: var(--card-gradient) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5) !important;
+}
+
+.modal-header {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.2) !important;
+  position: relative;
+}
+
+.modal-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-gradient);
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+.modal-header h3 {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-family: "Orbitron", sans-serif !important;
+}
+
+.close {
+  color: var(--accent-primary) !important;
+  transition: all 0.3s ease !important;
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+}
+
+.close:hover {
+  color: var(--accent-secondary) !important;
+  background: rgba(181, 55, 242, 0.1) !important;
+  transform: rotate(90deg) !important;
+}
+
+/* History page gaming theme */
+.history-header {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2) !important;
+}
+
+.history-nav h1 {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Orbitron", sans-serif !important;
+}
+
+.btn-back {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: var(--accent-primary) !important;
+  border: 2px solid var(--accent-primary) !important;
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-back:hover {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5) !important;
+}
+
+.history-main {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Gaming scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 14, 39, 0.5);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gradient);
+  border-radius: 8px;
+  border: 2px solid rgba(10, 14, 39, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--accent-secondary) 0%,
+    var(--accent-primary) 100%
+  );
+  box-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* Charts gaming enhancement */
+canvas {
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3)) !important;
+}
+
+/* Achievement popup */
+.achievement-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-gradient);
+  border: 2px solid var(--accent-gold);
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 300px;
+  box-shadow: var(--shadow-gold);
+  z-index: 9999;
+  animation: achievementPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes achievementPop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.achievement-popup .achievement-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 8px;
+  animation: levelUp 1s ease-in-out;
+}
+
+@keyframes levelUp {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.08) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.achievement-popup .achievement-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.achievement-popup .achievement-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+/* Responsive gaming adjustments */
+@media (max-width: 768px) {
+  .achievement-popup {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .header {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .date-container,
+  .header-center,
+  .header-right {
+    justify-self: center !important;
+  }
+}
+
+/* Typography overrides for gaming */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+p,
+span,
+label,
+input,
+textarea,
+select {
+  font-family: "Rajdhani", "Inter", sans-serif !important;
+}
+
+/* Ensure all text remains visible on dark backgrounds */
+.customize-section h4,
+.activity-config-title,
+.config-field label,
+.form-group label {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Emoji and color pickers gaming style */
+.emoji-grid,
+.basic-colors,
+.advanced-colors {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 2px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.emoji-option {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 2px solid transparent !important;
+}
+
+.emoji-option:hover,
+.color-option:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5) !important;
+  transform: scale(1.2) !important;
+}
+
+.emoji-option.selected {
+  background: var(--accent-gradient) !important;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5) !important;
+}
+
+.color-option.selected {
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6) !important;
+}
+
+/* Activity config gaming style */
+.activity-config {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 2px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.activity-config:hover {
+  border-color: var(--accent-primary) !important;
+  background: rgba(99, 102, 241, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15) !important;
+}
+
+.remove-activity-btn {
+  background: rgba(255, 51, 102, 0.1) !important;
+  color: var(--accent-danger) !important;
+  border: 2px solid rgba(255, 51, 102, 0.3) !important;
+}
+
+.remove-activity-btn:hover {
+  background: rgba(255, 51, 102, 0.2) !important;
+  border-color: var(--accent-danger) !important;
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.5) !important;
+  transform: scale(1.1) rotate(10deg) !important;
+}
+
+/* Color toggle button gaming style */
+.color-toggle-btn {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.color-toggle-btn:hover {
+  background: rgba(99, 102, 241, 0.2) !important;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Custom color picker gaming style */
+.custom-color-picker {
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+.custom-color-picker:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Form actions gaming style */
+.form-actions {
+  border-top: 2px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Power-up effect for completed activities */
+.activity-card.power-up {
+  animation: powerUp 0.6s ease-out;
+}
+
+@keyframes powerUp {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Particle animation for celebrations */
+.particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes particles {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx, 0), var(--ty, -100px)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Combo counter animation */
+.combo-counter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 900;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: "Orbitron", monospace;
+  z-index: 9999;
+  animation: comboAppear 1s ease-out forwards;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  filter: drop-shadow(0 0 20px var(--accent-primary));
+}
+
+@keyframes comboAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+/* Refined glow pulse animation for progress bars at 100% */
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.4),
+      0 0 12px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.5),
+      0 0 18px rgba(99, 102, 241, 0.3), 0 0 24px rgba(139, 92, 246, 0.2);
+  }
+}
+
+/* Mobile nav gaming enhancements */
+.bottom-nav {
+  background: var(--card-gradient) !important;
+  border-top: 2px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 -4px 20px rgba(99, 102, 241, 0.2) !important;
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-family: "Rajdhani", sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--accent-primary) !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.nav-item.active {
+  box-shadow: inset 0 2px 0 var(--accent-primary) !important;
+}
+
+/* Page transition */
+.page {
+  animation: pageSlideIn 0.4s ease-out;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state animation */
+@keyframes loadingSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  border: 3px solid rgba(99, 102, 241, 0.2);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: loadingSpin 1s linear infinite;
+  margin: 20px auto;
+}
+
+/* ============================================
+   RESPONSIVE & MOBILE REFINEMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce glow effects on mobile for battery life */
+  .activity-icon {
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.25) !important;
+    animation: none !important;
+  }
+
+  .progress-circle {
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.2)) !important;
+  }
+
+  /* Optimize header for mobile */
+  .header {
+    padding: 20px !important;
+  }
+
+  .date-container h1 {
+    font-size: 1.75rem !important;
+  }
+
+  /* Reduce animations on mobile */
+  .streak-number {
+    animation: numberPulse 3s ease-in-out infinite !important;
+  }
+
+  /* Modal mobile optimization */
+  .modal-content {
+    width: 95% !important;
+    margin: 5% auto !important;
+  }
+
+  .modal-header {
+    padding: 20px !important;
+  }
+
+  .modal-body {
+    padding: 20px !important;
+  }
+
+  /* Bottom nav enhancements - HIDDEN */
+  .bottom-nav {
+    display: none !important;
+  }
+
+  .nav-item {
+    padding: 12px 8px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .nav-icon {
+    font-size: 1.25rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Reduce spacing on mobile */
+  .activities-grid {
+    gap: 16px !important;
+  }
+
+  .activity-card {
+    padding: 20px !important;
+  }
+
+  .activity-card:hover {
+    transform: scale(1.015) !important;
+  }
+}
+
+/* ============================================
+   ENHANCED MODAL & FORM STYLES
+   ============================================ */
+
+/* Ensure all modal inputs match theme */
+.modal-body input[type="text"],
+.modal-body input[type="number"],
+.modal-body select,
+.modal-body textarea {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 2px solid rgba(99, 102, 241, 0.25) !important;
+  color: #ffffff !important;
+  font-family: "Rajdhani", "Inter", sans-serif !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.modal-body input[type="text"]:focus,
+.modal-body input[type="number"]:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+  outline: none !important;
+}
+
+/* Modal labels */
+.modal-body label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Modal buttons */
+.modal-body button:not(.close) {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Primary modal button */
+.modal-body button[type="submit"],
+.modal-body button.btn-add,
+.form-actions button:first-child {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.modal-body button[type="submit"]:hover,
+.modal-body button.btn-add:hover,
+.form-actions button:first-child:hover {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Secondary modal button */
+.form-actions button:last-child:not(:first-child) {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: var(--accent-silver) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+.form-actions button:last-child:not(:first-child):hover {
+  background: rgba(99, 102, 241, 0.2) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+/* Radio buttons and checkboxes styling */
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--accent-primary) !important;
+  width: 18px !important;
+  height: 18px !important;
+  cursor: pointer !important;
+}
+
+/* Select dropdowns */
+select {
+  cursor: pointer !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236366f1' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 20px !important;
+  padding-right: 40px !important;
+}
+
+/* ============================================
+   CHART & STATISTICS ENHANCEMENTS
+   ============================================ */
+
+/* Canvas charts refined */
+canvas {
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.2)) !important;
+}
+
+/* Statistics cards */
+.stat-card,
+.mini-stat {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.stat-card:hover {
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Tab navigation */
+.tab-btn {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.3s ease !important;
+}
+
+.tab-btn.active {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--accent-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .activity-icon {
+    animation: none !important;
+  }
+
+  .streak-number {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .header,
+  .activity-card,
+  .modal-content {
+    border-width: 2px !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+}
+
+/* ============================================
+   STATISTICS PAGE GAMING THEME
+   ============================================ */
+
+/* History content container */
+.history-content {
+  background: transparent !important;
+}
+
+/* Tab navigation gaming enhancement */
+.tab-container {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  margin-bottom: 32px !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.tab-btn {
+  background: rgba(99, 102, 241, 0.05) !important;
+  color: var(--accent-silver) !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.tab-btn:hover {
+  background: rgba(99, 102, 241, 0.15) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.tab-btn.active {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Tab content panels */
+.tab-panel {
+  background: transparent !important;
+}
+
+/* Overview stats grid */
+.overview-stats {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 32px !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.overview-stats h2 {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: 24px !important;
+}
+
+/* Statistics cards with custom color support */
+.stat-card {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all 0.3s ease !important;
+}
+
+.stat-card:hover {
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25) !important;
+}
+
+.stat-card.featured {
+  border: 2px solid var(--accent-gold) !important;
+  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2) !important;
+}
+
+.stat-card.featured:hover {
+  box-shadow: 0 12px 48px rgba(245, 158, 11, 0.3) !important;
+}
+
+.stat-icon {
+  font-size: 2.5rem !important;
+  margin-bottom: 12px !important;
+  filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3)) !important;
+}
+
+.stat-value {
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin: 8px 0 !important;
+}
+
+.stat-label {
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: var(--accent-silver) !important;
+  opacity: 0.8 !important;
+}
+
+/* Goal cards with custom color coordination */
+.goal-card {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Custom color left border - uses inline style from script.js */
+.goal-card::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  /* Border color set via inline style */
+}
+
+.goal-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: 20px !important;
+}
+
+.goal-main {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex: 1 !important;
+}
+
+.goal-icon {
+  font-size: 2rem !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  flex-shrink: 0 !important;
+  /* Background gradient uses custom color from inline style */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.goal-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.quick-complete-btn {
+  color: #ffffff !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  min-width: 44px !important;
+  height: 38px !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.quick-complete-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3) !important;
+  border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Layout Controls Gaming Theme - More Subtle */
+.section-header-with-controls {
+  background: rgba(99, 102, 241, 0.03) !important;
+  padding: 16px 20px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(99, 102, 241, 0.1) !important;
+  margin-bottom: 20px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.section-title {
+  color: var(--accent-silver) !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin: 0 !important;
+}
+
+.layout-controls label {
+  color: var(--accent-silver) !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.layout-selector {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 2px solid rgba(99, 102, 241, 0.3) !important;
+  color: #ffffff !important;
+  font-family: "Orbitron", monospace !important;
+}
+
+.layout-selector:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+}
+
+.layout-btn {
+  background: var(--accent-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
+}
+
+.layout-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+}
+
+/* Layout Modal Gaming Theme */
+.layout-modal-overlay {
+  background: rgba(26, 29, 46, 0.9) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.layout-modal {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+.layout-modal-header {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.layout-modal-header h3 {
+  color: var(--accent-silver) !important;
+  font-family: "Orbitron", sans-serif !important;
+}
+
+.close-layout-modal {
+  color: var(--accent-silver) !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.close-layout-modal:hover {
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.layout-option label {
+  color: var(--accent-silver) !important;
+  font-family: "Rajdhani", sans-serif !important;
+}
+
+.layout-option input[type="range"] {
+  accent-color: var(--accent-primary) !important;
+}
+
+.layout-option select {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  color: #ffffff !important;
+  font-family: "Orbitron", monospace !important;
+}
+
+.preview-container {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.preview-card {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  color: var(--accent-silver) !important;
+}
+
+.layout-modal-footer {
+  background: rgba(99, 102, 241, 0.05) !important;
+  border-top: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.apply-layout-btn {
+  background: var(--accent-gradient) !important;
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.cancel-layout-btn {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: var(--accent-silver) !important;
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.cancel-layout-btn:hover {
+  background: rgba(99, 102, 241, 0.2) !important;
+}
+
+.goal-title {
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin: 0 !important;
+}
+
+/* Goal stats - New Clean Structure */
+.goal-stats {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.goal-stat-primary {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.goal-stat-primary .goal-stat-value {
+  display: block !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 2.25rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  /* Color uses custom goal color from inline style */
+}
+
+.goal-stat-primary .goal-stat-label {
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: var(--accent-silver) !important;
+  opacity: 0.8 !important;
+}
+
+.goal-stat-secondary {
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.goal-stat-item {
+  flex: 1 !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 1px solid rgba(99, 102, 241, 0.15) !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.goal-stat-item .goal-stat-value {
+  display: block !important;
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 4px !important;
+  /* Color uses custom goal color from inline style */
+}
+
+.goal-stat-item .goal-stat-label {
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: var(--accent-silver) !important;
+  opacity: 0.7 !important;
+}
+
+/* Calendar heatmap gaming theme */
+.calendar-heatmap {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 32px !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.calendar-heatmap h2 {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: 24px !important;
+}
+
+/* Heatmap cells with custom colors */
+.heatmap-day {
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.heatmap-day:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3) !important;
+  z-index: 10 !important;
+}
+
+/* Chart containers */
+.chart-container {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.chart-container h3 {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: var(--accent-primary) !important;
+  margin-bottom: 20px !important;
+}
+
+/* Comparison table styling */
+.comparison-table {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.comparison-table table {
+  width: 100% !important;
+  background: transparent !important;
+}
+
+.comparison-table th {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: #ffffff !important;
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.875rem !important;
+  padding: 16px !important;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+.comparison-table td {
+  padding: 16px !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
+  color: var(--accent-silver) !important;
+  font-family: "Rajdhani", sans-serif !important;
+}
+
+.comparison-table tr:hover {
+  background: rgba(99, 102, 241, 0.05) !important;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Filter controls for statistics */
+.filter-controls {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 24px !important;
+  box-shadow: var(--shadow-card) !important;
+  display: flex !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+.filter-controls label {
+  font-family: "Orbitron", sans-serif !important;
+  text-transform: uppercase !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.5px !important;
+  color: var(--accent-silver) !important;
+}
+
+.filter-controls select,
+.filter-controls input {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 2px solid rgba(99, 102, 241, 0.25) !important;
+  color: #ffffff !important;
+  font-family: "Rajdhani", sans-serif !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+}
+
+.filter-controls select:focus,
+.filter-controls input:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3) !important;
+  outline: none !important;
+}
+
+/* Mini stats for quick overview */
+.mini-stat {
+  background: var(--card-gradient) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.mini-stat:hover {
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2) !important;
+}
+
+.mini-stat-icon {
+  font-size: 1.5rem !important;
+}
+
+.mini-stat-value {
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+.mini-stat-label {
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  color: var(--accent-silver) !important;
+  opacity: 0.8 !important;
+}
+
+/* Responsive statistics page */
+@media (max-width: 768px) {
+  .tab-container {
+    padding: 4px !important;
+  }
+
+  .tab-btn {
+    padding: 10px 16px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .goal-card {
+    padding: 16px !important;
+  }
+
+  .goal-icon {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.75rem !important;
+  }
+
+  .goal-title {
+    font-size: 1.125rem !important;
+  }
+
+  .goal-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .stat-card {
+    padding: 16px !important;
+  }
+
+  .chart-container {
+    padding: 16px !important;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 8px !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* ============================================
+   COLOR PICKER ENHANCED STYLING
+   ============================================ */
+
+/* Color picker grid improvements */
+.color-picker-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)) !important;
+  gap: 12px !important;
+  padding: 16px !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+  border: 2px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+.color-option {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+  border: 3px solid rgba(99, 102, 241, 0.2) !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.color-option::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: inherit !important;
+  opacity: 1 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.color-option:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 40px rgba(99, 102, 241, 0.3) !important;
+  transform: scale(1.15) translateY(-4px) !important;
+  z-index: 10 !important;
+}
+
+.color-option.selected {
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.8), 0 0 48px rgba(245, 158, 11, 0.4),
+    inset 0 0 16px rgba(245, 158, 11, 0.3) !important;
+  transform: scale(1.1) !important;
+}
+
+.color-option.selected::after {
+  content: "✓" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(245, 158, 11, 0.8) !important;
+  animation: checkmarkPop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Custom color input */
+.custom-color-picker {
+  width: 100% !important;
+  height: 48px !important;
+  border: 3px solid rgba(99, 102, 241, 0.3) !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.custom-color-picker:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.custom-color-picker:focus {
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.5) !important;
+  outline: none !important;
+}
+
+/* Color section headers */
+.color-section {
+  margin-bottom: 24px !important;
+}
+
+.color-section h3 {
+  font-family: "Orbitron", sans-serif !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: var(--accent-primary) !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Advanced colors section */
+.advanced-section {
+  margin-top: 24px !important;
+  padding-top: 24px !important;
+  border-top: 2px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Color controls */
+.color-controls {
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+  margin-top: 20px !important;
+  flex-wrap: wrap !important;
+}
+
+/* Ensure activity cards use custom colors */
+.activity-card[data-color] .activity-icon {
+  /* Color set via inline style in script.js */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.activity-card[data-color]:hover .activity-icon {
+  /* Enhanced glow on hover using custom color */
+  filter: brightness(1.1) !important;
+}
+
+/* Progress bars with custom colors */
+.progress-fill[style*="background"] {
+  /* Gradient set via inline style */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Completion badges with custom colors */
+.completion-badge[style*="background"] {
+  /* Background color set via inline style */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.completion-badge.show[style*="background"] {
+  animation: badgePop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* ============================================
+   CUSTOM COLOR ENHANCEMENTS FOR ACTIVITY CARDS
+   ============================================ */
+
+/* Add colored border and glow to activity cards based on custom color */
+/* Border and box-shadow applied via inline JavaScript styles using custom color */
+
+/* Add subtle colored background overlay */
+.activity-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    var(--card-overlay, rgba(99, 102, 241, 0.03)) 100%
+  ) !important;
+  pointer-events: none !important;
+  border-radius: inherit !important;
+  opacity: 0.5 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+/* Progress fill inherits custom color from inline style */
+.progress-fill {
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  position: relative !important;
+}
+
+.progress-fill::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  ) !important;
+  animation: shimmer 2s infinite !important;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Completion badge shows with custom color */
+.completion-badge.show,
+.completion-badge.completed {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 0 30px currentColor !important;
+}
+
+/* Activity header title gets subtle color accent */
+.activity-card .activity-header h2 {
+  position: relative !important;
+}
+
+.activity-card .activity-header h2::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -4px !important;
+  left: 0 !important;
+  width: 40px !important;
+  height: 2px !important;
+  background: linear-gradient(
+    90deg,
+    var(--title-accent, rgba(99, 102, 241, 0.6)),
+    transparent
+  ) !important;
+  transition: width 0.3s ease !important;
+}
+
+/* Progress stats use custom color accent */
+.progress-stats span:first-child {
+  color: var(--title-accent, #6366f1) !important;
+  font-weight: 700 !important;
+}
+
+/* Notes section label with custom color */
+.notes-section label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Edit and remove buttons - keep neutral so they don't clash */
+.edit-btn,
+.remove-btn {
+  opacity: 0.7 !important;
+  transition: all 0.3s ease !important;
+}
+
+.edit-btn:hover,
+.remove-btn:hover {
+  opacity: 1 !important;
+}
+
+/* ============================================
+   COMPACT CARD LAYOUT ADJUSTMENTS
+   ============================================ */
+
+/* Reduce activity header spacing */
+.activity-header {
+  margin-bottom: 16px !important;
+}
+
+.activity-header h2 {
+  font-size: 1.25rem !important;
+  margin: 0 !important;
+}
+
+.activity-icon {
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 1.75rem !important;
+}
+
+/* Compact form inputs */
+.time-input-group,
+.form-group {
+  margin-bottom: 12px !important;
+}
+
+.time-input-group input,
+.form-group input,
+.form-group select {
+  padding: 8px 12px !important;
+  font-size: 0.875rem !important;
+}
+
+/* Compact progress section */
+.progress-stats {
+  font-size: 0.875rem !important;
+  margin-top: 8px !important;
+}
+
+/* Compact notes section */
+.notes-section {
+  margin-top: 16px !important;
+}
+
+.notes-section textarea {
+  min-height: 80px !important;
+  padding: 10px !important;
+  font-size: 0.875rem !important;
+}
+
+.notes-section label {
+  margin-bottom: 6px !important;
+  font-size: 0.75rem !important;
+}
+
+/* Activity controls compact */
+.activity-controls {
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+}
+
+.quick-complete-activity-btn {
+  order: -1 !important; /* Place complete button first */
+  margin-right: 8px !important;
+}
+
+.edit-btn,
+.remove-btn {
+  padding: 6px 10px !important;
+  font-size: 1rem !important;
+}
+
+/* Completion badge compact */
+.completion-badge {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 1rem !important;
+}
+
+/* Activities grid - better spacing */
+.activities-grid {
+  gap: 20px !important;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)) !important;
+}
+
+@media (max-width: 1400px) {
+  .activities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important;
+  }
+
+  .activity-card {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .activity-card {
+    padding: 16px !important;
+    max-width: 100% !important;
+  }
+
+  .activity-icon {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.5rem !important;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,18 @@
+=== NETLIFY DROP - INSTANT UPLOAD ===
+
+1. Go to: https://app.netlify.com/drop
+
+2. Drag and drop your entire project folder
+   (or select these files):
+   ✓ index.html
+   ✓ styles.css  
+   ✓ gaming-theme.css
+   ✓ script.js
+
+3. Get instant live URL!
+   Example: https://amazing-name-123456.netlify.app
+
+✅ No account needed
+✅ Instant deployment  
+✅ HTTPS enabled
+✅ Mobile-friendly URL
